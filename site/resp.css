@@ -1,0 +1,24 @@
+@media screen and (max-width: 980px) {
+   .padd {
+      width: 80%;
+   }
+}
+
+@media screen and (max-width: 650px) {
+   header{
+      font-size: 90%;
+   }
+   .padd {
+      width: 60%;
+      height: 50%;
+   }
+   
+}
+
+@media screen and (max-width: 480px) {
+   .padd{
+      width: auto;
+      height:30%;
+   }
+   
+}

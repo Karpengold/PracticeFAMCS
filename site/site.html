@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<meta charset="UTF-8">		
+		<title>Chat</title>
+		<link rel="stylesheet" href="style.css"/>		
+        <link rel="stylesheet" href="norm.css"/>
+         <link rel="stylesheet" href="resp.css"/>
+		 <script src = "script.js"></script>
+
+	</head>		
+	<body>
+		<div align = "center">	
+			<header >Hello! Let's start:</header>	
+			<form onsubmit="loginUser();return false">		
+				<input id="login"  type="text" class="login" value="username">
+				<input id="password" type="password" class="login" value="password">
+				<input id="buttonlogin" class="button" type="button" onclick=loginUser() value="log in">
+			</form>
+		</div>
+		
+		<div align="center" > 	
+				
+			<div class="padd" align="center">
+				
+				<div id="tools" align="left">
+						<div id="visible" align="left">
+							<input id="editbutton" class="button" type="button" onclick=editElement() value="edit">
+							<input id="deletebutton" class="button" type="button" onclick=deleteElement() value="delete">  
+						</div>
+					</div>			
+
+				<div id="area" >		
+					<div id="history" onclick="history()" align="center">show message history
+					</div>			
+			       	<table id="messagebox" align="left" cellpadding="5">
+			       	</table>
+		       	</div>
+		       
+	       		<form onsubmit="addElement();return false">
+		       		<div id="inputbox" align="right">
+				       	<input id="inputsend"  type="text" autocomplete="off" class="message" value="input message..." >
+						<input id="buttonsend" class="button" type="button" onclick=addElement() value="send">  
+					</div>
+				<form>
+				
+		     </div>
+		</div>
+	</body>
+</html>	
