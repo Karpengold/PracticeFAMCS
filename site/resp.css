@@ -2,6 +2,13 @@
    .padd {
       width: 80%;
    }
+   footer {
+      width: 70%;
+   }
+   footer {
+      display: none;
+   }
+   
 }
 
 @media screen and (max-width: 650px) {

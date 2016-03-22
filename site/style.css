@@ -1,6 +1,8 @@
 
 body {
-  background-image: url(http://cs622524.vk.me/v622524687/1fe99/J9UHzqncmBQ.jpg);
+  /*background-image: url(http://cs622524.vk.me/v622524687/1fe99/J9UHzqncmBQ.jpg);*/
+background-image: url(foncity.png)
+  
 
 }
 td {
@@ -22,7 +24,14 @@ td {
     text-align: center;
 }
 
-.comment_bubble:before {
+#foot {
+  float:right;
+  font-family: 'Open Sans Semibold';
+  padding-top: 50px;
+  padding-right: 10px;
+  font-size:30px;
+}
+/*.comment_bubble:before {
     
     content: "";
     width: 0;
@@ -32,23 +41,19 @@ td {
     position: absolute;
 
     border-top: 5px solid transparent;
-    border-right: 7px solid #337ab7;
+    border-right: 7px solid transparent;
     border-bottom: 5px solid transparent;
    
-}
+}*/
 
 #tools {
+  float:left;
   display: inline-block;
   border-radius: 8px;
   width: 90%;
   height: 6%;
 }
 
-#panel {
-  float:left;
-  width: 20%; 
-  background: red;
-}
 .button {
 	  display: inline-block;
   	padding: 4px 12px;
@@ -62,33 +67,10 @@ td {
     border-radius: 8px;
     font-family: 'Open Sans Semibold';
 }
-.buttonedit {
-    
-    width: 20px;
-    height: 20px;
-
-    text-align: center;
-    cursor: pointer;
-    background-size: 100% 100%;
-    background-image: url(edit.jpeg);
-    border: 1px solid #337ab7;
-    border-radius: 8px;
-    font-family: 'Open Sans Semibold';
+#buttonedit {
+    display: none;
 }
-.buttondelete {
-    
-    width: 20px;
-    height: 20px;
- 
 
-    text-align: center;
-    cursor: pointer;
-    background-size: 100% 100%;
-    background-image: url(delete.png);
-    border: 1px solid #337ab7;
-    border-radius: 8px;
-    font-family: 'Open Sans Semibold';
-}
 .login {
     
     display: inline-block;
@@ -135,8 +117,9 @@ td {
   border-color: #2F4F4F;
 }
 #visible{
-  display: none;
+  float:left;
   margin: 1%;
+  display: none;  
 }
 #history:hover {
   cursor: pointer;
