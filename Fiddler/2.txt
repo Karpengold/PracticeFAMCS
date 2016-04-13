@@ -1,0 +1,11 @@
+GET http://10.150.5.254:999/chat?token=TN27EN HTTP/1.1
+User-Agent: Composer
+Host: 10.150.5.254:999
+
+
+HTTP/1.1 200 OK
+Date: Tue, 05 Apr 2016 08:52:43 GMT
+Access-control-allow-origin: *
+Content-length: 43
+
+{"messages":["wazzuuuup"],"token":"TN35EN"}
