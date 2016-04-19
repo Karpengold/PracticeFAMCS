@@ -1,0 +1,2 @@
+{"id":"1","author":"User1","timestamp":1459169330000,"text":"Hello, all!"}
+{"id":"2","author":"User1","timestamp":1459169330000,"text":"Hello, all!"}
