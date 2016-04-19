@@ -1,5 +1,5 @@
 userName = "";
-number = -1;
+var editedRowsCount = 0;
 var messageList = [];
 
 var uniqueId = function() {
@@ -10,6 +10,7 @@ var uniqueId = function() {
 };
 function loginUser() {
 	userName = document.getElementById('login').value;
+	if(userName == "") return;
 	localStorage.setItem("Username", userName);
 	document.getElementById('login').value = "";
 	
@@ -26,7 +27,7 @@ var theMessage = function(time, message, userName) {
 
 function newMessage() {
 	var message = document.getElementById('inputsend');
-	if(message.value =="") return;
+	if(message.value =="" || userName == "") return;
 	var now = new Date();
 	addElement(theMessage(now.getHours()+":"+now.getMinutes(), message.value, userName));
 	
@@ -59,10 +60,40 @@ function addElement(theMessage) {
 
 	var tools = document.getElementById('visible');
 	tr.onclick = function(event){
-		if(number != -1) {
+		if(this.classList.contains("edited")){
+			editedRowsCount--;			
+			this.classList.remove("edited");
+			tdMessage.style.background = "#337ab7";
+		}
+		else {
+			editedRowsCount++;
+			this.classList.add("edited");	
+			tdMessage.style.background = "#2F4F4F";		
+		}
+
+		if(editedRowsCount > 0){
+			tools.style.display = "inline-block";
+			
+		}
+		else {
+			tools.style.display = "none";
+		}
+
+		if(editedRowsCount > 1){
+			document.getElementById('editbutton').style.display = "none";
+		}
+		else {
+			document.getElementById('editbutton').style.display = "inline-block";
+		}
+		
+
+	/*	if(number != -1) {
 				document.getElementById('messagebox').rows[number].cells[2].style.background = "#337ab7" ;
 				
 		}
+
+		
+		alert(this.classList);
 		if(tools.style.display=="none"){
 
 			tools.style.display = "inline-block";
@@ -71,9 +102,8 @@ function addElement(theMessage) {
 		}
 		else {
 			
-			tools.style.display = "none";
-			tdMessage.style.background = "#337ab7";
-		}
+			
+		} */
 	}
 	table.appendChild(tr);
 	document.getElementById('inputsend').value = "";
@@ -85,7 +115,7 @@ function restore() {
 		return;
 	}
 
-	var item = localStorage.getItem("TODOs taskList");
+	var item = localStorage.getItem("messageList");
 
 	return item && JSON.parse(item);
 }
@@ -96,34 +126,44 @@ function store(listToSave) {
 		return;
 	}
 
-	localStorage.setItem("TODOs taskList", JSON.stringify(listToSave));
+	localStorage.setItem("messageList", JSON.stringify(listToSave));
 }
 function run(){
 	var tools = document.getElementById('visible');
 	tools.style.display = "none";
 	userName = localStorage.getItem("Username");
-	var allTasks = restore();
+	var allMessages = restore();
 
-	createAllTasks(allTasks);
+	createAllMessages(allMessages);
 }
-function createAllTasks(allTasks) {
-	 for(var i = 0; i < allTasks.length; i++)
-	 	addElement(allTasks[i]);
+function createAllMessages(allMessages) {
+	 for(var i = 0; i < allMessages.length; i++)
+	 	addElement(allMessages[i]);
 }
 function deleteElement() { 
-	var table = document.getElementById('messagebox');
+	/*var table = document.getElementById('messagebox');
 	table.deleteRow(number);
 	var tools = document.getElementById('visible');
-	tools.style.display="none";
-	var allTasks = restore();
-	var tr = document.getElementById('messagebox').rows[number];
-	 for(var i = 0; i < allTasks.length; i++)
-	 	if(tr.cells[3].innerHTML == allTasks[i].messageId){
-	 		allTasks.splice(i,1);
-	 		store(allTasks);
-	 		return;
-	 	}
-}
+	tools.style.display="none";*/
+	
+	var tr = document.getElementsByClassName('edited');
+	var table = document.getElementById('messagebox');
+	var size = tr.length;
+	var allMessages = restore();
+    for(var i = 0; i < allMessages.length; i++) {
+ 		for(var j=0; j<size; j++){
+	 		if(tr[j].cells[3].innerHTML == allMessages[i].messageId){
+		 		allMessages.splice(i,1);		
+		 	}
+ 		}
+ 	}
+ 	store(allMessages);
+	for(var i = size - 1; i >= 0; i--){
+		table.deleteRow(tr[i].rowIndex);
+	}
+	
+	
+}	
 
 
 
@@ -163,15 +203,15 @@ function editElement() {
 	document.getElementById('buttonsend').style.display = "none";	
 }
 function editMessage() {
-	var tr = document.getElementById('messagebox').rows[number];
+	var tr = document.getElementsByClassName('edited');
 	var edit = document.getElementById('inputsend').value;
-	tr.cells[2].innerHTML = edit;
-	var allTasks = restore();
+	tr[0].cells[2].innerHTML = edit;
+	var allMessages = restore();
 
-	 for(var i = 0; i < allTasks.length; i++)
-	 	if(tr.cells[3].innerHTML == allTasks[i].messageId){
-	 		allTasks[i].description = edit;
-	 		store(allTasks);
+	 for(var i = 0; i < allMessages.length; i++)
+	 	if(tr[0].cells[3].innerHTML == allMessages[i].messageId){
+	 		allMessages[i].description = edit;
+	 		store(allMessages);
 	 		return;
 	 	}
 
