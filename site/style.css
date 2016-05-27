@@ -128,3 +128,18 @@ td {
 
 .edited {}
 
+.idBlock {
+  font-size:0;
+  width: 10px;
+  height: 10px;
+}
+.editBlock {
+  display: inline-block;
+  background-image: url(https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/edit.png);
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  font-size: 0;
+}
+.deleteBlock {
+  font-style: italic;
+}
