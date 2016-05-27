@@ -8,6 +8,7 @@ public class Message implements Serializable {
     private String author;
     private long timestamp;
     private String text;
+    private String edit;
 
     public String getId() {
         return id;
@@ -41,6 +42,7 @@ public class Message implements Serializable {
         this.text = text;
     }
 
+    public void setEdit(String edit) {this.edit = edit;}
     @Override
     public String toString() {
         return "Message{" +
@@ -48,6 +50,7 @@ public class Message implements Serializable {
                 ", author='" + author + '\'' +
                 ", timestamp=" + timestamp +
                 ", text='" + text + '\'' +
+                ", edit='" + edit + '\'' +
                 '}';
     }
 }

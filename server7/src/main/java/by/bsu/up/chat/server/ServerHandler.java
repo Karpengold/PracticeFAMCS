@@ -3,8 +3,6 @@ package by.bsu.up.chat.server;
 import by.bsu.up.chat.Constants;
 import by.bsu.up.chat.InvalidTokenException;
 import by.bsu.up.chat.common.models.Message;
-import by.bsu.up.chat.logging.Logger;
-import by.bsu.up.chat.logging.impl.Log;
 import by.bsu.up.chat.storage.InMemoryMessageStorage;
 import by.bsu.up.chat.storage.MessageStorage;
 import by.bsu.up.chat.storage.Portion;
@@ -13,6 +11,7 @@ import by.bsu.up.chat.utils.StringUtils;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import org.apache.log4j.Logger;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -23,10 +22,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+//import by.bsu.up.chat.logging.Logger;
+
 public class ServerHandler implements HttpHandler {
 
-    private static final Logger logger = Log.create(ServerHandler.class);
-
+  //  private static final Logger logger = Log.create(ServerHandler.class);
+    private static final Logger logger = Logger.getLogger(ServerHandler.class);
     private MessageStorage messageStorage = new InMemoryMessageStorage();
 
     @Override
@@ -81,6 +82,7 @@ public class ServerHandler implements HttpHandler {
                 return Response.badRequest(
                         String.format("Incorrect token in request: %s. Server does not have so many messages", token));
             }
+
             Portion portion = new Portion(index);
             List<Message> messages = messageStorage.getPortion(portion);
             String responseBody = MessageHelper.buildServerResponseBody(messages, messageStorage.size());
@@ -134,6 +136,7 @@ public class ServerHandler implements HttpHandler {
 
 
         if(messageStorage.removeMessage(token)){
+            logger.info("delete message "+ token);
             return Response.ok();
         }
         else {

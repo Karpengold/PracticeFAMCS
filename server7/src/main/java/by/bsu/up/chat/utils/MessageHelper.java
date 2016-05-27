@@ -3,8 +3,8 @@ package by.bsu.up.chat.utils;
 import by.bsu.up.chat.Constants;
 import by.bsu.up.chat.InvalidTokenException;
 import by.bsu.up.chat.common.models.Message;
-import by.bsu.up.chat.logging.Logger;
-import by.bsu.up.chat.logging.impl.Log;
+import by.bsu.up.chat.server.ServerHandler;
+import org.apache.log4j.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -25,7 +25,7 @@ public class MessageHelper {
     public static final String TOKEN_FORMAT = "TN[0-9]{2,}EN";
 
     private static final JSONParser jsonParser = new JSONParser();
-    private static final Logger logger = Log.create(MessageHelper.class);
+    private static final Logger logger = Logger.getLogger(ServerHandler.class);
 
     /**
      * Builds token based on amount of messages, which are
@@ -117,11 +117,13 @@ public class MessageHelper {
         String author = ((String) jsonObject.get(Constants.Message.FIELD_AUTHOR));
         long timestamp = ((long) jsonObject.get(Constants.Message.FIELD_TIMESTAMP));
         String text = ((String) jsonObject.get(Constants.Message.FIELD_TEXT));
+        String edited = ((String)jsonObject.get(Constants.Message.FIELD_EDIT));
         Message message = new Message();
         message.setId(id);
         message.setAuthor(author);
         message.setTimestamp(timestamp);
         message.setText(text);
+        message.setEdit(edited);
         return message;
     }
 
@@ -132,6 +134,7 @@ public class MessageHelper {
         Message message = new Message();
         message.setId(id);
         message.setText(text);
+        message.setEdit("true");
         return message;
     }
 

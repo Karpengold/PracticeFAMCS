@@ -1,8 +1,8 @@
 package by.bsu.up.chat;
 
-import by.bsu.up.chat.logging.impl.Log;
 import by.bsu.up.chat.server.ServerHandler;
 import com.sun.net.httpserver.HttpServer;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -12,9 +12,9 @@ import java.util.concurrent.Executors;
 
 public class Launcher {
 
-    private static final Log logger = Log.create(Launcher.class);
+    private static final Logger logger = Logger.getLogger(Launcher.class);
 
-    public static final int DEFAULT_SERVER_PORT = 8080;
+    public static final int DEFAULT_SERVER_PORT = 9081;
 
     public static final String HELP_COMMAND = "--help";
     public static final String SHORT_HELP_COMMAND = "-h";

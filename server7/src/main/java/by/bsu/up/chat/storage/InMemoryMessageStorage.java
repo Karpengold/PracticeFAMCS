@@ -1,9 +1,9 @@
 package by.bsu.up.chat.storage;
 
 import by.bsu.up.chat.common.models.Message;
-import by.bsu.up.chat.logging.Logger;
-import by.bsu.up.chat.logging.impl.Log;
+
 import com.google.gson.Gson;
+import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class InMemoryMessageStorage implements MessageStorage {
 
     private static final String DEFAULT_PERSISTENCE_FILE = "messages.srg";
 
-    private static final Logger logger = Log.create(InMemoryMessageStorage.class);
+    private static final Logger logger = Logger.getLogger(InMemoryMessageStorage.class);
 
     private List<Message> messages = new ArrayList<>();
 
@@ -32,14 +32,7 @@ public class InMemoryMessageStorage implements MessageStorage {
             throw new IllegalArgumentException(String.format("Porting last index %d can not be less then start index %d", to, from));
         }
         to = Math.max(to, messages.size());
-
-        List <Message> result =  messages.subList(from, to);
-        for(Message i: result){
-            if (i.getTimestamp()==-1){
-                result.remove(i);
-            }
-        }
-        return result;
+        return messages.subList(from, to);
     }
 
     @Override
@@ -64,7 +57,7 @@ public class InMemoryMessageStorage implements MessageStorage {
     public synchronized boolean removeMessage(String messageId) {
         for (Message i : messages) {
             if (i.getId().equals(messageId)) {
-                i.setTimestamp(-1);
+                messages.remove(i);
                 return true;
             }
         }

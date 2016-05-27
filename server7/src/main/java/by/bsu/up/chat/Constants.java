@@ -2,7 +2,7 @@ package by.bsu.up.chat;
 
 public interface Constants {
     String PROTOCOL = "http";
-    String CONTEXT_PATH = "/todos";
+    String CONTEXT_PATH = "/chat";
 
     String REQUEST_METHOD_GET = "GET";
     String REQUEST_METHOD_POST = "POST";
@@ -30,9 +30,10 @@ public interface Constants {
     int MESSAGE_FLUSH_TARIGGER = 3;
 
     interface Message {
-        String FIELD_ID = "id";
+        String FIELD_ID = "messageId";
         String FIELD_AUTHOR = "author";
         String FIELD_TIMESTAMP = "timestamp";
         String FIELD_TEXT = "text";
+        String FIELD_EDIT = "edit";
     }
 }
