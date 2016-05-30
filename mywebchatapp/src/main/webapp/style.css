@@ -1,0 +1,145 @@
+
+body {
+  /*background-image: url(http://cs622524.vk.me/v622524687/1fe99/J9UHzqncmBQ.jpg);*/
+background-image: url(foncity.png)
+  
+
+}
+td {
+  vertical-align: top;
+}
+
+.bubble{
+  background:#786b59; 
+}
+.comment_bubble {
+    width:200px;
+    height: 20px;
+    padding-left: 0px;
+    cursor: pointer;
+    background:#337ab7;
+    position: relative;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    text-align: center;
+}
+
+#foot {
+  float:right;
+  font-family: 'Open Sans Semibold';
+  padding-top: 50px;
+  padding-right: 10px;
+  font-size:30px;
+}
+/*.comment_bubble:before {
+    
+    content: "";
+    width: 0;
+    height: 0;
+    right: 100%;
+    top: 5px;
+    position: absolute;
+
+    border-top: 5px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 5px solid transparent;
+   
+}*/
+
+#tools {
+  float:left;
+  display: inline-block;
+  border-radius: 8px;
+  width: 90%;
+  height: 6%;
+}
+
+.button {
+	  display: inline-block;
+  	padding: 4px 12px;
+  	font-size: 14px;
+  	line-height: 20px;
+  	color: #ffffff;
+  	text-align: center;
+  	cursor: pointer;
+  	background-color: #337ab7;
+  	border: 1px solid #337ab7;
+    border-radius: 8px;
+    font-family: 'Open Sans Semibold';
+}
+#buttonedit {
+    display: none;
+}
+
+.login {
+    
+    display: inline-block;
+    height: 30px;
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+    width: 200px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    font-family: 'Open Sans';
+}
+.message {
+    
+    display: inline-block;
+    height: 30px;
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+    width: 400px;
+    border: 2px solid #d3d3d3;
+    border-radius: 8px;
+    font-family: 'Open Sans';
+}
+
+#area {
+ 
+  background: rgba(255,255,255, 0.5);
+  border-radius: 8px;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%; 
+  word-break: break-all;
+  
+}
+
+.padd {
+  padding-top: 5px;
+  width: 700px;
+  height: 700px;
+  border: 5px;
+  border-color: #2F4F4F;
+}
+#visible{
+  float:left;
+  margin: 1%;
+  display: none;  
+}
+#history:hover {
+  cursor: pointer;
+  color:green;
+}
+
+.edited {}
+
+.idBlock {
+  font-size:0;
+  width: 10px;
+  height: 10px;
+}
+.editBlock {
+  display: inline-block;
+  background-image: url(https://cdn2.iconfinder.com/data/icons/windows-8-metro-style/512/edit.png);
+  background-repeat: no-repeat;
+  background-size: 10px 10px;
+  font-size: 0;
+}
+.deleteBlock {
+  font-style: italic;
+}
