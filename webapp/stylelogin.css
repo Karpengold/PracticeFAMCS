@@ -1,0 +1,32 @@
+body {
+    /*background-image: url(http://cs622524.vk.me/v622524687/1fe99/J9UHzqncmBQ.jpg);*/
+    background-image: url(foncity.png)
+
+
+}
+.button {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    background-color: #337ab7;
+    border: 1px solid #337ab7;
+    border-radius: 8px;
+    font-family: 'Open Sans Semibold', serif;
+}
+.login {
+
+    display: inline-block;
+    height: 30px;
+    padding: 4px 6px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #555555;
+    width: 200px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    font-family: 'Open Sans', serif;
+}
